@@ -11,7 +11,6 @@ export class Create extends Component{
   handleChange(e){
     var type = e.target.name;
     var val = e.target.value;
-    console.log(this.state);
     if (type == 'name'){
       this.setState({name: val});
     }
@@ -22,8 +21,10 @@ export class Create extends Component{
   send(){
     this.setState({send: true});
     //SEND INFO
-    
+
     this.setState({send: false, name: '', desc: ''});
+    this.props.change('none');
+
   }
   render(){
     if (this.state.send){

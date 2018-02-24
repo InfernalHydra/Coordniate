@@ -20,19 +20,21 @@ class SearchBox extends Component{
   }
   /*
   handleChange(e){
-    let searched = [{id: 'qaz'}, {id: 'wsx'}, {id: 'edc'}];
-    this.setState({text: {text}, stuff: {searched}});
-  }*/
-  send(e){
-    let text = e.target.value;
-    let searched = [{id: 'qaz'}, {id: 'wsx'}, {id: 'edc'}];
-    //ADD REQUEST//
-    //SET IT TO {searched}//
-    this.setState({text: {text}, stuff: {searched}});
-  }
-  render(){
-    console.log(this.state);
-    return(
+  let searched = [{id: 'qaz'}, {id: 'wsx'}, {id: 'edc'}];
+  this.setState({text: {text}, stuff: {searched}});
+}*/
+send(e){
+  let text = e.target.value;
+  let searched = [{id: 'qaz'}, {id: 'wsx'}, {id: 'edc'}];
+  //ADD REQUEST//
+  //SET IT TO {searched}//
+  this.setState({text: {text}, stuff: {searched}});
+  this.props.change('none');
+
+}
+render(){
+  console.log(this.state);
+  return(
     <div>
       <input type='text'/>
       <button onClick={this.send}>send</button>
@@ -45,12 +47,10 @@ class Terms extends Component{
   render(){
     let searched = [];
 
-    console.log(this.props.stuff);
     const list = this.props.stuff.searched;
     for (let x in list)
     {
       let id = list[x].id;
-      console.log(id);
       searched.push(<Boxes key={id} text={id}/>);
     }
     return(
@@ -82,7 +82,6 @@ class Boxes extends Component{
     }
   }
   render(){
-    console.log(this.state.selected);
     if (this.state.selected){
       return(<div onMouseOver={this.onHover} onMouseOut={this.onHoverOut} onClick={this.onClick} style={this.state.style}>
         {this.props.text}
