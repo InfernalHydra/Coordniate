@@ -1,0 +1,53 @@
+#Main-Title {
+    font-family: "Work Sans";
+    font-weight: 100;
+    font-size: 2em;
+    color: #000000;
+    text-align:center;
+    }
+    
+#Flat-Line {
+    /* Left to Right Border */
+    border: 1px solid #87BFFF;
+    width: 100%;
+    top: 20%;
+}
+
+
+#TD-Line {
+    /* Top to Bottom Border */
+    border-left: 2px solid #92C2FA;
+    height: 39rem;
+    margin-left: 50%;
+}
+    
+    
+    
+#Option {
+    /* Text CSS for Create and Find Event */
+    font-family: "Work Sans";
+    font-weight: 200;
+    font-size: 36px;
+    color: #000000;
+    letter-spacing: -0.34px;
+    top: 35%;
+}
+    
+#Option:hover {
+    color: #408FEC;
+}    
+    
+.oLeft {
+    /* Create Event */
+    position: absolute;
+    left: 23%;
+    text-align: center; 
+    
+}
+
+.oRight {
+    /* Find Event */
+    position: absolute;
+    right: 25%;
+    text-align: center; 
+}
