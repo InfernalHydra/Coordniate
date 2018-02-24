@@ -1,3 +1,5 @@
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
 function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2){
   var geocoder = new google.maps.Geocoder();
   geocoder.geocode( { 'address': address}, function(results, status) {
