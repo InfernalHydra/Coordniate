@@ -11,15 +11,26 @@
     </head>
     <body>
     <h1 id="Main-Title">COORDINATE</h1> <!-- Main Title -->
-    <p id="Option" class="oLeft">FIND</p> <!-- Create Event Option -->
-    <p id="Option" class="oRight">CREATE</p> <!-- Search Event Option -->
+    <button id="Option" class="oLeft">FIND</button> <!-- Create Event Option -->
+    <button id="Option" onclick="rightClick()" class="oRight">CREATE</button> <!-- Search Event Option -->
     <div id="Flat-Line"></div> <!-- Horizontal Line -->
 
     <div id="mapBox"></div>
     
-    <div id="leftSideBar"></div>
+    <div id="leftSideBar">
+            <input type="text" placeholder="Name" id="itemInput"> <br>
+    </div>
     <div id="rightSideBar">
-       
+            <div id="formBox">
+                    <form id="itemText">
+                       <input type="text" placeholder="Name" id="itemInput"> <br>
+                       <input placeholder="Title" type="text" id="itemInput"> <br>
+                       <input placeholder="Address" type="text" id="itemInput"> <br>
+                       <input placeholder="Category" type="text" id="itemInput"> <br>
+                       <textarea placeholder="Description" id="itemInput" class="itemTextArea" rows="1" cols="22"> </textarea>  <br>
+                       <input type="submit" id="itemInput" style="background-color: #fff;" value="SUBMIT">
+                    </form>
+                </div>
     </div>
 
     </body>
