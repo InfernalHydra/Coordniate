@@ -26,13 +26,10 @@ class SearchBox extends Component{
       xhr.send(text);
       xhr.onload = function(e){
         if (xhr.readyState === 4){
-          if (xhr.status === 200){
-            /*
-            var story = JSON.parse(xhr.response).story
+          if (xhr.status === 200)
+            var stuff = JSON.parse(xhr.response).stuff
             this.setState({
-              story: story,
-              storyLength: story.length,
-              currentChapter: story[0]
+              stuff = stuff.stuff;
             })
           } else {
             console.error(xhr.statusText)
@@ -72,7 +69,36 @@ class Terms extends Component{
 }
 
 class Boxes extends Component{
+  constructor(props){
+    super(props);
+    this.state = {selected: true, style: {background: 'red', width: '100px'}};
+    this.onHover = this.onHover.bind(this);
+    this.onHoverOut = this.onHoverOut.bind(this);
+    this.onClick = this.onClick.bind(this);
+
+  }
+  onHover(){
+    this.setState({style: {background: 'blue'}});
+  }
+  onHoverOut(){
+    this.setState({style: {background: 'red'}});
+  }
+  onClick(){
+    console.log('clicked');
+    if(this.state.selected)
+    {
+      this.setState({selected: false});
+    }
+  }
   render(){
-    return(<p>{this.props.text}</p>);
+    console.log(this.state.selected);
+    if (this.state.selected){
+      return(<div onMouseOver={this.onHover} onMouseOut={this.onHoverOut} onClick={this.onClick} style={this.state.style}>
+        {this.props.text}
+      </div>);
+    }
+    else {
+      return null;
+    }
   }
 }
