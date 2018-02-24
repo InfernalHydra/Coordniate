@@ -4,13 +4,8 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Events } from '../api/events.js';
 
 class MapContainer extends Component {
-  renderMarkers()
-  {
+  renderMarkers() {
     //Events.insert({ lat : 15, lng : 15 });
-    if(this.props.events.length == 0)
-    {
-      return;
-    }
     console.log(this.props.events);
     return this.props.events.map((event) => (
       <Marker key = {event.lat * event.lng} position = {{lat : event.lat, lng : event.lng}}/>
@@ -18,10 +13,11 @@ class MapContainer extends Component {
   }
 
   render() {
+    console.log("Rendered")
     return (
-      <Map google = {this.props.google} zoom = {8}>
-        <Marker position = {{lat: 29.7604, lng: -95.3698}}/>  
-        {this.renderMarkers()}
+      <Map classname = "map" google = {this.props.google} zoom = {8}>
+        <span style= {{display : 'none'}} ><Marker /></span>
+        {this.props.isReady ? this.renderMarkers() : ''}
     </Map>
     );
   }
@@ -30,8 +26,9 @@ class MapContainer extends Component {
 }
 
 export default withTracker(() => {
-  Meteor.subscribe('events');
+  const subscription = Meteor.subscribe('events');
   return {
-    events: Events.find({}).fetch()
+    isReady : subscription.ready(),
+    events: subscription.ready() && Events.find({}).fetch()
   };
 })(MapContainer);
