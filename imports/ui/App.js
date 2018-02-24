@@ -5,7 +5,7 @@ export default class App extends Component
 {
   constructor(props){
     super(props);
-    this.state = {color: red};
+    this.state = {color: "red"};
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick(){
@@ -14,7 +14,7 @@ export default class App extends Component
   }
   render() {
     return (
-      <button onClick={handleClick}> CLICK MEH </button>
+      <button onClick={handleClick} style = {this.state}> CLICK MEH </button>
     );
   }
 }
