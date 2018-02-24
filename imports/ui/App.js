@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import { Title } from './title.js'
 import { Search } from './search.js'
+import { Create } from './create.js'
 
 export default class App extends Component
 {
@@ -36,6 +37,7 @@ export default class App extends Component
       return (
         <div>
           <Title/>
+          <Create/>
         </div>
       );
     }

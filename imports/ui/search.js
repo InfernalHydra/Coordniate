@@ -15,36 +15,27 @@ class SearchBox extends Component{
   constructor(props){
     super(props);
     this.state = {text: '', stuff: []};
-    this.handleChange = this.handleChange.bind(this);
+    //this.handleChange = this.handleChange.bind(this);
+    this.send = this.send.bind(this);
   }
+  /*
   handleChange(e){
+    let searched = [{id: 'qaz'}, {id: 'wsx'}, {id: 'edc'}];
+    this.setState({text: {text}, stuff: {searched}});
+  }*/
+  send(e){
     let text = e.target.value;
     let searched = [{id: 'qaz'}, {id: 'wsx'}, {id: 'edc'}];
-    /*
-    var xhr = new XMLHttpRequest();
-      xhr.open("GET", '', true);
-      xhr.send(text);
-      xhr.onload = function(e){
-        if (xhr.readyState === 4){
-          if (xhr.status === 200)
-            var stuff = JSON.parse(xhr.response).stuff
-            this.setState({
-              stuff = stuff.stuff;
-            })
-          } else {
-            console.error(xhr.statusText)
-          }
-        }
-      }.bind(this)*/
-
+    //ADD REQUEST//
+    //SET IT TO {searched}//
     this.setState({text: {text}, stuff: {searched}});
-
   }
   render(){
     console.log(this.state);
     return(
     <div>
-      <input type='text' onChange={this.handleChange}/>
+      <input type='text'/>
+      <button onClick={this.send}>send</button>
       <Terms stuff={this.state.stuff}/>
     </div>
   )};
