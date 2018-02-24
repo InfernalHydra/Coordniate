@@ -14,7 +14,7 @@ export default class App extends Component
   }
   render() {
     return (
-      <button onClick={handleClick} style = {this.state}> CLICK MEH </button>
+      <button onClick={this.handleClick} style = {this.state}> CLICK MEH </button>
     );
   }
 }
