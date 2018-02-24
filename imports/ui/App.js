@@ -1,20 +1,46 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
+import { Title } from './title.js'
 
 export default class App extends Component
 {
   constructor(props){
     super(props);
-    this.state = {color: "red"};
-    this.handleClick = this.handleClick.bind(this);
+    this.state = {start: "none"};
+    //this.handleClick = this.handleClick.bind(this);
   }
-  handleClick(){
-    let color = this.state.color == "red" ? "blue" : "red";
-    this.setState({color: color});
+  onClickC(){
+
   }
   render() {
-    return (
-      <button onClick={this.handleClick} style = {this.state}> CLICK MEH </button>
-    );
+    let start = this.state.start;
+
+    if (start == "none")
+    {
+      return (
+        <div>
+          <Title/>
+          <div><button>create</button></div>
+          <div><button>search</button></div>
+        </div>
+      )
+    }
+    else if (start == "create")
+    {
+      return (
+        <div>
+          <Title/>
+        </div>
+      );
+    }
+    else if (start == "search")
+    {
+      return (
+        <div>
+          <Title/>
+        </div>
+      );
+    }
   }
+
 }
