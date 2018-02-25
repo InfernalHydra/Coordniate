@@ -49,23 +49,8 @@ export class Create extends Component{
     let text = document.getElementsByClassName('itemTextArea');
     console.log(text[0].value);
 
-    var that = this;
     var geocoder = new google.maps.Geocoder();
-    geocoder.geocode({'address' : this.state.add}, (res, status) => {
-    if (status == 'OK') {
-      console.log(res);
-      var foo = [0,0];
-      foo[0] = res[0].geometry.location.lat();
-      foo[1] = res[0].geometry.location.lng();
-      that.setState({lat: foo[0], lng: foo[1]})
-      console.log(foo);
-    }
-    else {
-      console.log(status);
-    }});
-
-    /*
-    var promise = new Promise((resolve, reject) => {
+    const promise = new Promise((resolve, reject) => {
       geocoder.geocode({'address' : this.state.add}, (res, status) => {
       if (status == 'OK') {
         console.log(res);
@@ -77,12 +62,15 @@ export class Create extends Component{
         console.log(foo);
       }
       else {
+        reject("error")
         console.log(status);
       }
-    })}, () => {reject("error")}).then((coords) => {
-      that.setState({lat : coords[0], lng : coords[1]})
-    });*/
+    })}, () => {reject("error")});
 
+    promise.then((coords) => {
+      console.log(coords);
+      this.setState({lat : coords[0], lng : coords[1]});
+    });
     console.log(this.state.lat);
     var foo = {
       name: this.state.name,

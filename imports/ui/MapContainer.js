@@ -54,7 +54,7 @@ class MapContainer extends Component {
       return (
         <div className = "wrapper" id="map">
           <Map classname = "map" google = {this.props.google} initialCenter = {this.state} zoom = {13}>
-            <Marker position = {{lat : 32.9854, lng: -156.7669}}/>
+            <div style = {{style : 'hidden'}}><Marker position = {{lat : 32.9854, lng: -156.7669}}/></div>
             {this.props.isReady ? this.renderMarkers() : ''}
           </Map>
       </div>
