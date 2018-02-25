@@ -60,14 +60,15 @@ class MapContainer extends Component {
   }
 
   render() {
-
+    var focus = Events.find({poi:{ $exists: true}}).fetch()[0];
+    console.log(focus);
     if(this.state.render)
     {
       return (
         <div className = "wrapper" id="map">
           <Map classname = "map" google = {this.props.google} initialCenter = {this.state} zoom = {13}>
-            <div style = {{style : 'hidden'}}><Marker position = {{lat : 32.9854, lng: -156.7669}}/></div>
-            {this.props.isReady ? this.renderMarkers() : ''}
+          <Marker style = {{color : 'green'}} position = {{lat : focus.lat, lng: focus.lng}}/>
+            {this.props.isReady ? this.renderMarkers() : null}
           </Map>
       </div>
 
