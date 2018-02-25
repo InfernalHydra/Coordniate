@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
+import { withTracker } from 'meteor/react-meteor-data';
+import { Events } from '../api/events.js';
 
 class Search extends Component{
   render(){
@@ -20,10 +22,8 @@ class SearchBox extends Component{
   }
 send(e){
   let text = e.target.value;
-  
+
   let searched = events.find({address : text}).fetch();
-  //ADD REQUEST//
-  //SET IT TO {searched}//
   this.setState({text: {text}, stuff: {searched}});
 }
 render(){
