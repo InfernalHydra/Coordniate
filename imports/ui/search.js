@@ -9,6 +9,8 @@ export class Search extends Component{
     this.state = {text: '', stuff: []};
     this.send = this.send.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.getDistanceFromLatLonInMi = this.getDistanceFromLatLonInMi.bind(this);
+    this.deg2rad = this.deg2rad.bind(this);
   }
   handleChange(e){
     var val = e.target.value;
@@ -39,9 +41,38 @@ send(e){
     }
   })}, () => {reject("error")});
   promise.then((coords) =>{
-    Events.update({poi:{ $exists: true}}, {$set : {poi : text, lat : coords[0], lng : coords[1]}})
+    var bar = Events.find({poi : { $exists: true}}).fetch()[0]._id;
+    console.log(Events.find({poi : { $exists: true}}).fetch());
+    console.log(Events.find({poi : { $exists: true}}).fetch()[0]._id);
+    Meteor.call('events.update', bar, text, coords[0], coords[1]);
+    Events.find(
+      {poi:{ $exists : false}}
+    ).fetch().forEach((obj) => {
+      obj.dist = this.getDistanceFromLatLonInMi(coords[0], coords[1], obj.lat, obj.lng);
+      console.log(obj.dist);
+    });
+
   });
  }
+
+getDistanceFromLatLonInMi(lat1,lon1,lat2,lon2) {
+   var R = 3959; // Radius of the earth in km
+   var dLat = this.deg2rad(lat2-lat1);  // deg2rad below
+   var dLon = this.deg2rad(lon2-lon1);
+   var a =
+     Math.sin(dLat/2) * Math.sin(dLat/2) +
+     Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) *
+     Math.sin(dLon/2) * Math.sin(dLon/2)
+     ;
+   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+   var d = R * c; // Distance in km
+   return d;
+ }
+
+deg2rad(deg) {
+   return deg * (Math.PI/180)
+ }
+
 render(){
   return(
     <section id="find">
@@ -56,7 +87,7 @@ render(){
 
 class Terms extends Component{
   render(){
-    let searched = [];
+    let searched = Event.find({dist : {$lte : 20}});
     const list = this.props.stuff;
     //console.log(list);
     for (let x in list)
