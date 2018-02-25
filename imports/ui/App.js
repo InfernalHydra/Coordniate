@@ -13,7 +13,7 @@ class App extends Component
 {
   constructor(props){
     super(props);
-    this.state = {start: "none", select: false, principle: 'none', points: []};
+    this.state = {start: "none", select: false, principle: 'none', points: [], cate: 'none'};
   }
 
   render() {
@@ -21,6 +21,7 @@ class App extends Component
     let select = this.state.select;
     let principle = this.state.principle;
     let points = this.state.points;
+    let cate = this.state.cate;
     if (start == "none")
     {
       return (
@@ -39,12 +40,12 @@ class App extends Component
       {
         return (
           <div>
-            <OverLay />
+            <OverLay select={(select) => this.setState({select})} setCate={(cate) => this.setState({cate})}/>
 
             <Title start={start} change={(start) => this.setState({start})} />
             <article id="content">
               <section id="mapBox"> <MapContainer google = {this.props.google} loc = {this.state}/></section>
-              <Create change={(start) => this.setState({start})} select={(select) => this.setState({select})}/>
+              <Create category={cate} change={(start) => this.setState({start})} select={(select) => this.setState({select})}/>
             </article>
           </div>
         );
@@ -55,7 +56,7 @@ class App extends Component
             <Title start={start} change={(start) => this.setState({start})} />
             <article id="content">
               <section id="mapBox"> <MapContainer google = {this.props.google} loc = {this.state}/></section>
-              <Create change={(start) => this.setState({start})} select={(select) => this.setState({select})}/>
+              <Create category={cate} change={(start) => this.setState({start})} select={(select) => this.setState({select})}/>
             </article>
           </div>
         );
