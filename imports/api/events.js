@@ -11,8 +11,11 @@ Meteor.methods({
   'events.insert'(event) {
     Events.insert(event);
   },
-  'events.update'(id, inputPoi, inputLat, inputLgn) {
+  'events.updateCenter'(id, inputPoi, inputLat, inputLgn) {
     Events.update(id, {$set : {poi : inputPoi, lat : inputLat, lng : inputLgn}});
+  },
+  'events.update'(id, newDist) {
+    Events.update(id, {$set : {dist : newDist}});
   }
 });
 
