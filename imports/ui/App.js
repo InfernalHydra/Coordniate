@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom'
 import { Title } from './title.js'
 import { Search } from './search.js'
 import { Create } from './create.js'
+import { OverLay } from './OverLay.js'
 
 import MapContainer from './MapContainer.js'
 import {GoogleApiWrapper} from 'google-maps-react';
@@ -38,6 +39,8 @@ class App extends Component
       {
         return (
           <div>
+            <OverLay />
+            
             <Title start={start} change={(start) => this.setState({start})} />
             <article id="content">
               <section id="mapBox"> <MapContainer google = {this.props.google} loc = {this.state}/></section>
