@@ -72,8 +72,6 @@ export class Search extends Component{
     deg2rad(deg) {
       return deg * (Math.PI/180)
     }
-<<<<<<< HEAD
-=======
   })}, () => {reject("error")});
   promise.then((coords) =>{
     var bar = Events.find({poi : { $exists: true}}).fetch()[0]._id;
@@ -88,7 +86,6 @@ export class Search extends Component{
       Meteor.call('events.update', id, dist);
       console.log(obj.dist);
     });
->>>>>>> 0e5dfd3710d85560855632613c8de0689ead4c35
 
     render(){
       return(
@@ -163,10 +160,8 @@ export class Search extends Component{
               </section>
               <i id="icon"><i className="fas fa-baseball-ball"></i></i>
 
-<<<<<<< HEAD
             </div>);
           }
-=======
 class Terms extends Component{
   render(){
     let searched = Events.find({dist : {$lte : 20}}).fetch();
@@ -181,7 +176,6 @@ class Terms extends Component{
     );
   }
 }
->>>>>>> 0e5dfd3710d85560855632613c8de0689ead4c35
 
         }
 
