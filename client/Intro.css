@@ -272,21 +272,19 @@ body
 
 #rTool
 {
-    /* visibility: hidden; */
-    width: 5rem;
-    height: 3rem;
-    font-size: 1rem;
-    font-family: "Work Sans";
-    background-color: #fff;
-    color: #000;
-    text-align: center;
-    margin-right: 2%;
-    
-    /* Position the tooltip */
-    position: relative;
-    z-index: 5;
-    top: 0;
-    left: 30%;
-    margin-left: 25%;
-    overflow: visible;
+visibility: hidden;
+position: relative;
+top: -3rem;
+left: 100%;
+background-color: #87BFFF;
+height: 5rem;
+width: 7rem;
+/* padding-right: 4%; */
+font-family: "Work Sans";
+color: white;
+display: block;
+}
+
+#icon:hover #rTool {
+    visibility: visible;
 }
