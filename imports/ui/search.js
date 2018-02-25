@@ -21,6 +21,7 @@ class SearchBox extends Component{
 send(e){
   let text = e.target.value;
   let searched = [{id: 'qaz'}, {id: 'wsx'}, {id: 'edc'}];
+  console.log(searched);
   //ADD REQUEST//
   //SET IT TO {searched}//
   this.setState({text: {text}, stuff: {searched}});
