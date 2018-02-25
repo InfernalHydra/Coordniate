@@ -130,10 +130,11 @@ class Boxes extends Component{
         <section id="inItem">
           <article id="inItemH"><div style={{fontSize: '1.5rem'}}>{text.title}</div>&emsp;&emsp;<div style={{fontSize: '1rem', marginTop: '0.3rem'}}></div></article>
           {this.name}
-          <div style={{overflow: 'hidden', width: '100%', height: '1.25rem'}}>{text.address}, {text.city}, {text.state} {text.zip}</div>
+          <div style={{overflow: 'hidden', width: '100%', height: '1.25rem'}}>{text.address} {text.city} {text.state} {text.zip}</div>
         </section>
-        <i id="icon"><i className="fas fa-baseball-ball"></i></i>
-
+          <i id="icon"><i className="fas fa-baseball-ball"></i>
+          <div id="rTool">This is a baseball game.</div>
+          </i>
       </div>);
   }
 }

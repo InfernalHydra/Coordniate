@@ -39,7 +39,7 @@
     display: flex;
     position: absolute;
     width: 100%;
-    height: 39rem;
+    height: 40rem;
     border-bottom: 1px solid #87BFFF;
 }
 
@@ -260,7 +260,7 @@ border: 5px;
     letter-spacing: -0.07rem;
 }
 
-#itemInput, button:hover
+.hButton:hover
 {
     color: #3262FF;    
 }
@@ -268,4 +268,23 @@ border: 5px;
 body 
 {
     overflow-x: hidden;
+}
+
+#rTool
+{
+visibility: hidden;
+position: relative;
+top: -3rem;
+left: 100%;
+background-color: #87BFFF;
+height: 5rem;
+width: 7rem;
+padding-top: 1rem;
+font-family: "Work Sans";
+color: white;
+display: block;
+}
+
+#icon:hover #rTool {
+    visibility: visible;
 }
