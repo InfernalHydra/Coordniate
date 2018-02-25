@@ -90,6 +90,7 @@ export class Create extends Component{
     this.props.change('none');
   }
   render(){
+    console.log(this.props);
     if (this.state.send){
       return null;
     }
@@ -105,7 +106,7 @@ export class Create extends Component{
             <input type="number" placeholder="Zip" name='zip' id="itemInput" min={0} max={99999} onChange={this.handleChange}/>
             <textarea placeholder="Description" id="itemInput" className="itemTextArea" rows="1" cols="22"/>
             <select name='cate' id="itemInput" onClick={this.handleSelect}>
-              <option value='Category'>Category</option>
+              <option value={this.props.category}>{this.props.category}</option>
             </select>
             <button id="itemInput" style={{backgroundColor: '#fff'}} onClick={this.send}>CREATE</button>
           </form>
