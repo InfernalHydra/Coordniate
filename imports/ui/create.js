@@ -6,7 +6,7 @@ import { Events } from '../api/events.js';
 export class Create extends Component{
   constructor(props){
     super(props);
-    this.state = {send: false, name: '', title: '', add: '', cate: ''};
+    this.state = {send: false, name: '', title: '', add: '', cate: '', city: '', zip: 0, state: ''};
     this.send = this.send.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
@@ -24,6 +24,15 @@ export class Create extends Component{
       this.setState({add: val});
     }
     else if (type == 'cate'){
+      this.setState({cate: val});
+    }
+    else if (type == 'city'){
+      this.setState({cate: val});
+    }
+    else if (type == 'state'){
+      this.setState({cate: val});
+    }
+    else if (type == 'zip'){
       this.setState({cate: val});
     }
   }
@@ -48,7 +57,7 @@ export class Create extends Component{
       });
     }
     //SEND INFO
-    this.setState({send: false, name: '', title: ''});
+    this.setState = {send: false, name: '', title: '', add: '', cate: '', city: '', zip: 0, state: ''};
     this.props.change('none');
 
   }
@@ -62,8 +71,11 @@ export class Create extends Component{
           <form id="itemText">
             <input type='text' placeholder="Name" name='name' id="itemInput" onChange={this.handleChange}/><br/>
             <input type='text' placeholder="Title" name='title' id="itemInput" onChange={this.handleChange}/><br/>
-
             <input type="text" placeholder="Address" name='add' id="itemInput" onChange={this.handleChange}/> <br/>
+            <input type="text" placeholder="City" name='city' id="itemInput" onChange={this.handleChange}/> <br/>
+            <input type="text" placeholder="State" name='state' id="itemInput" onChange={this.handleChange}/> <br/>
+            <input type="number" placeholder="Zip" name='zip' id="itemInput" min={0} max={99999} onChange={this.handleChange}/> <br/>
+
             <select name='cate' id="itemInput" onClick={this.handleSelect}>
               <option value='Category'>Category</option>
             </select>

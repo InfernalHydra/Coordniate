@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { withTracker } from 'meteor/react-meteor-data';
 import { Events } from '../api/events.js';
 
-class Search extends Component{
+export class Search extends Component{
   render(){
     return (
       <section id="find">
@@ -94,4 +94,4 @@ export default withTracker(() => {
     isReady : subscription.ready(),
     events: subscription.ready() && Events.find({}).fetch()
   };
-})(MapContainer);
+})(Search);
