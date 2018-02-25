@@ -4,6 +4,7 @@
     border-bottom: 1px solid #87BFFF;
     font-family: "Work Sans";
     height: 20%;
+    left:0;
 }
 
 #button 
@@ -52,7 +53,7 @@
     float: left;  
     z-index: 1;
     background-color: #fff;
-    opacity: 0.5;
+    
 }
 
 #sForm 
@@ -117,6 +118,11 @@ float: right;
     margin-right: 28%;
     border: 1px solid #87BFFF;
     border-radius: 2px;
+
+}
+
+#square:hover 
+{
     background-color: #87D37C;
 }
 
@@ -135,7 +141,7 @@ border-left: 1px solid #87BFFF;
 float: right;
 z-index: 1;
 background-color: #fff;
-opacity: 0.5;
+
 }
 
 #itemInput 
