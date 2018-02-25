@@ -26,13 +26,11 @@ export class Title extends Component{
 
   render(){
     return(
-      <article id="titleBar">
-        <button id="button" className="oLeft" onClick={this.onClickS}>search</button>
+      <div id="titleBar">
+        <button id="button" className="oLeft" onClick={this.onClickS}>FIND</button>
         <h1 id="header">COORDINATE</h1>
-        <button id="button" className="oLeft" onClick={this.onClickC}>create</button>
+        <button id="button" className="oLeft" onClick={this.onClickC}>CREATE</button>
 
-        <div id="Flat-Line"></div>
-
-      </article>
+      </div>
     );}
   }
