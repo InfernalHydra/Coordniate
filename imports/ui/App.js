@@ -8,13 +8,13 @@ export default class App extends Component
 {
   constructor(props){
     super(props);
-    this.state = {start: "none"};
+    this.state = {start: "none", select: false};
     //this.handleClick = this.handleClick.bind(this);
   }
 
   render() {
     let start = this.state.start;
-    console.log(start);
+    console.log(this.state.select);
     if (start == "none")
     {
       return (
@@ -29,8 +29,8 @@ export default class App extends Component
       return (
         <div>
           <Title start={this.state.start} change={(start) => this.setState({start})} />
-          <div></div>
-          <Create change={(start) => this.setState({start})}/>
+          <div id="mapBox"></div>
+          <Create change={(start) => this.setState({start})} select={(select) => this.setState({select})}/>
         </div>
       );
     }
@@ -39,8 +39,8 @@ export default class App extends Component
       return (
         <div>
           <Title start={this.state.start} change={(start) => this.setState({start})} />
+          <div id="mapBox"></div>
           <Search change={(start) => this.setState({start})}/>
-          <div></div>
         </div>
       );
     }

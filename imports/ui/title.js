@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
 
-const styles = {height: 20 ,textAlign: 'center', border: 'dotted'};
-
 export class Title extends Component{
   constructor(props){
     super(props);
@@ -28,10 +26,12 @@ export class Title extends Component{
 
   render(){
     return(
-      <div style={styles}>
-        <button onClick={this.onClickC}>create</button>
-        TITLE
-        <button onClick={this.onClickS}>search</button>
+      <div>
+        <button id="Option" className="oRight" onClick={this.onClickC}>create</button>
+        <h1 id="Main-Title">COORDINATE</h1>
+        <button id="Option" className="oLeft" onClick={this.onClickS}>search</button>
+        <div id="Flat-Line"></div>
+
       </div>
     );}
   }
