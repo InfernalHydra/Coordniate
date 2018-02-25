@@ -6,7 +6,7 @@ class App extends Component
 {
   render() {
     return (
-      <MapContainer google = {this.props.google}/>
+      <MapContainer google = {this.props.google} loc = {this.state}/>
     );
   }
 }
