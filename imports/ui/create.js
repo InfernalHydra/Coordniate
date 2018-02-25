@@ -8,7 +8,7 @@ var request = require("request");
 export class Create extends Component{
   constructor(props){
     super(props);
-    this.state = {send: false, name: '', title: '', add: '', cate: '', city: '', zip: 0, state: '', lat: 0, lng: 0};
+    this.state = {send: false, name: '', title: '', add: '', cate: '', city: '', zip: 0, state: '', lat: 0, lng: 0, desc: ''};
     this.send = this.send.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
@@ -37,17 +37,19 @@ export class Create extends Component{
     else if (type == 'zip'){
       this.setState({zip: val});
     }
+    else if (type == 'desc'){
+      this.setState({desc: val});
+    }
   }
   handleSelect(e){
     e.preventDefault();
     console.log(e.target.value);
     this.props.select(true);
   }
+
   send(){
     console.log(this.state);
     this.setState({send: true});
-    let text = document.getElementsByClassName('itemTextArea');
-    console.log(text[0].value);
 
     var geocoder = new google.maps.Geocoder();
     const promise = new Promise((resolve, reject) => {
@@ -67,11 +69,8 @@ export class Create extends Component{
       }
     })}, () => {reject("error")});
 
-    promise.then((coords) => {
-      console.log(coords);
-      this.setState({lat : coords[0], lng : coords[1]});
-    });
-    console.log(this.state.lat);
+    promise.then((coords) =>{
+
     var foo = {
       name: this.state.name,
       title: this.state.title,
@@ -80,11 +79,12 @@ export class Create extends Component{
       state : this.state.state,
       zip : this.state.zip,
       category: this.state.cate,
-      description: text[0].value,
-      lat: this.state.lat,
-      lng: this.state.lng,
-    };
-    Meteor.call('events.insert', foo);
+      description: this.state.desc,
+      lat: coords[0],
+      lng: coords[1],
+     };
+    Meteor.call('events.insert', foo);}
+    );
     //SEND INFO
     this.setState = {send: false, name: '', title: '', add: '', cate: '', city: '', zip: 0, state: ''};
     this.props.change('none');
@@ -104,7 +104,7 @@ export class Create extends Component{
             <input type="text" placeholder="City" name='city' id="itemInput" onChange={this.handleChange}/>
             <input type="text" placeholder="State" name='state' id="itemInput" onChange={this.handleChange}/>
             <input type="number" placeholder="Zip" name='zip' id="itemInput" min={0} max={99999} onChange={this.handleChange}/>
-            <textarea placeholder="Description" id="itemInput" className="itemTextArea" rows="1" cols="22"/>
+            <textarea placeholder="Description" id="itemInput" className="itemTextArea" rows="1" cols="22" onChange={this.handleChange}/>
             <select name='cate' id="itemInput" onClick={this.handleSelect}>
               <option value={this.props.category}>{this.props.category}</option>
             </select>
