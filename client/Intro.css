@@ -1,4 +1,4 @@
-#titleBar 
+#titleBar
 {
     display: flex;
     border-bottom: 1px solid #87BFFF;
@@ -6,7 +6,7 @@
     height: 20%;
 }
 
-#button 
+#button
 {
     background-color: #fff;
     font-family: "Work Sans";
@@ -20,13 +20,13 @@
     color: #408FEC;
 }
 
-.oLeft 
+.oLeft
 {
     border: none;
     width: 25%;
 }
 
-#header 
+#header
 {
     text-align: center;
     width: 50%;
@@ -45,18 +45,21 @@
     border-bottom: 1px solid #87BFFF;
 }
 
-#find 
+#find
 {
-    width: 50%;
+    position: absolute;
+
+    width: 25%;
     height: 100%;
+    
     border-right: 1px solid #87BFFF;
-    float: left;  
+    float: left;
     z-index: 1;
     background-color: #fff;
     opacity: 0.5;
 }
 
-#sForm 
+#sForm
 {
     display: flex;
     height: 3rem;
@@ -72,17 +75,17 @@ width: 100%;
 letter-spacing: -0.05rem;
 }
 
-#listItems 
+#listItems
 {
 /* font-family: "Work Sans"; */
 border: none;
 width: 100%;
 /* font-size: 1.25rem; */
 height: 6rem;
-float: right; 
+float: right;
 }
 
-#inItemH 
+#inItemH
 {
     display: flex;
 }
@@ -109,7 +112,7 @@ float: right;
     color: #3262FF;
 }
 
-#square 
+#square
 {
     margin-top: 4%;
     width: 40%;
@@ -128,18 +131,18 @@ float: right;
     background-color: #87BFFF;
 }
 
-#create 
+#create
 {
 width: 50%;
 height: 100%;
-border-left: 1px solid #87BFFF; 
+border-left: 1px solid #87BFFF;
 float: right;
 z-index: 1;
 background-color: #fff;
 opacity: 0.5;
 }
 
-#itemInput 
+#itemInput
 {
 font-family: "Work Sans";
 font-size: 1rem;
@@ -164,7 +167,7 @@ background-color: #fff;
     opacity: 0.8;
 }
 
-#cMenu 
+#cMenu
 {
     /* These are Category Menu Options */
     z-index:3;
@@ -191,7 +194,7 @@ height: 40%;
 width: 10rem;
 }
 
-#fcCard 
+#fcCard
 {
     /* This is for subtitle fonts */
     font-size: 1.25rem;
@@ -205,13 +208,9 @@ width: 10rem;
     margin-right: 5%;
     display: flex;
     flex-wrap: wrap;
-<<<<<<< HEAD
     overflow: scroll;
 }
 #bod
 {
   overflow: hidden;
 }
-=======
-}
->>>>>>> d6e7520081ed1efac7d9ae1d1fb65dd02a7eb12d
