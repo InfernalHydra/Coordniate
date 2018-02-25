@@ -43,7 +43,8 @@ export class Create extends Component{
   }
   handleSelect(e){
     e.preventDefault();
-    console.log(e.target.value);
+    console.log(this.state);
+
     this.props.select(true);
   }
 

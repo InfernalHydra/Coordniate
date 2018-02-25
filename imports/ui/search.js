@@ -94,21 +94,38 @@ class Boxes extends Component{
   }
   render(){
     let text = this.props.text;
+    if (this.state.selected)
+    {
 
-      return(<div onMouseOver={this.onHover} onMouseOut={this.onHoverOut} onClick={this.onClick} style={this.state.style}>
-        <section id="inItem">
-          <article id="inItemH"><div style={{fontSize: '1.5rem'}}>{text.title}</div>&emsp;&emsp;<div style={{fontSize: '1rem', marginTop: '0.3rem'}}></div></article>
-          {this.name}
-          <div style={{overflow: 'hidden', width: '100%', height: '1.25rem'}}>{text.address}, {text.city}, {text.state} {text.zip}</div>
-        </section>
-        <i id="icon"><i className="fas fa-baseball-ball"></i></i>
+      return(
+        <div onMouseOver={this.onHover} onMouseOut={this.onHoverOut} onClick={this.onClick} style={this.state.style}>
+          <Desc/>
+          <section id="inItem">
+            <article id="inItemH"><div style={{fontSize: '1.5rem'}}>{text.title}</div>&emsp;&emsp;<div style={{fontSize: '1rem', marginTop: '0.3rem'}}></div></article>
+            {this.name}
+            <div style={{overflow: 'hidden', width: '100%', height: '1.25rem'}}>{text.address}, {text.city}, {text.state} {text.zip}</div>
+          </section>
+          <i id="icon"><i className="fas fa-baseball-ball"></i></i>
 
-      </div>);
+        </div>);
+    }
+      else{
+        return(
+          <div onMouseOver={this.onHover} onMouseOut={this.onHoverOut} onClick={this.onClick} style={this.state.style}>
+            <section id="inItem">
+              <article id="inItemH"><div style={{fontSize: '1.5rem'}}>{text.title}</div>&emsp;&emsp;<div style={{fontSize: '1rem', marginTop: '0.3rem'}}></div></article>
+              {this.name}
+              <div style={{overflow: 'hidden', width: '100%', height: '1.25rem'}}>{text.address}, {text.city}, {text.state} {text.zip}</div>
+            </section>
+            <i id="icon"><i className="fas fa-baseball-ball"></i></i>
+
+          </div>);
+      }
   }
 }
 class Desc extends Component{
   render(){
-    <div></div>
+    <div id="desc">HI</div>
   }
 }
 export default withTracker(() => {
