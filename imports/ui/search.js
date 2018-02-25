@@ -44,11 +44,13 @@ export class Search extends Component{
         var bar = Events.find({poi : { $exists: true}}).fetch()[0]._id;
         console.log(Events.find({poi : { $exists: true}}).fetch());
         console.log(Events.find({poi : { $exists: true}}).fetch()[0]._id);
-        Meteor.call('events.update', bar, text, coords[0], coords[1]);
+        Meteor.call('events.updateCenter', bar, text, coords[0], coords[1]);
         Events.find(
           {poi:{ $exists : false}}
         ).fetch().forEach((obj) => {
-          obj.dist = this.getDistanceFromLatLonInMi(coords[0], coords[1], obj.lat, obj.lng);
+          var dist = this.getDistanceFromLatLonInMi(coords[0], coords[1], obj.lat, obj.lng);
+          var id = obj._id;
+          Meteor.call('events.update', id, dist);
           console.log(obj.dist);
         });
 
