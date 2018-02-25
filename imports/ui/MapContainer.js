@@ -73,6 +73,6 @@ export default withTracker(() => {
   const subscription = Meteor.subscribe('events');
   return {
     isReady : subscription.ready(),
-    events: subscription.ready() && Events.find({city:{ $exists: false}}).fetch()
+    events: subscription.ready() && Events.find({poi:{ $exists: false}}).fetch()
   };
 })(MapContainer);

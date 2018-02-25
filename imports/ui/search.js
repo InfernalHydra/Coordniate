@@ -15,8 +15,9 @@ send(e){
   let searched = Events.find({address : text}).fetch();
   this.setState({text: {text}, stuff: {searched}});
   var geocoder = new google.maps.Geocoder();
+  console.log(text);
   const promise = new Promise((resolve, reject) => {
-    geocoder.geocode({'address' : text}, (res, status) => {
+    geocoder.geocode({'address' : {text}}, (res, status) => {
     if (status == 'OK') {
       console.log(res);
       //console.log(res[0].geometry.location.lat());
@@ -32,7 +33,7 @@ send(e){
     }
   })}, () => {reject("error")});
   promise.then((coords) =>{
-  Events.update({city:{ $exists: true}}, {$set : {city : text, lat : coords[0], lng : coords[1]}})
+  Events.update({poi:{ $exists: true}}, {$set : {poi : text, lat : coords[0], lng : coords[1]}})
   });
  }
 render(){

@@ -4,8 +4,8 @@ import {check} from 'meteor/check'
 
 export const Events = new Mongo.Collection('events');
 
-if(Events.find({city:{ $exists: true}}).fetch().length === 0) {
-  Events.insert({city : '', lat : 0, lng : 0});
+if(Events.find({poi:{ $exists: true}}).fetch().length === 0) {
+  Events.insert({poi : '', lat : 0, lng : 0});
 }
 Meteor.methods({
   'events.insert'(event) {
