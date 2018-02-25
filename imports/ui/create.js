@@ -57,7 +57,7 @@ export class Create extends Component{
       var foo = [0,0];
       foo[0] = res[0].geometry.location.lat();
       foo[1] = res[0].geometry.location.lng();
-      that.setState(lat: foo[0], lng: foo[1])
+      that.setState({lat: foo[0], lng: foo[1]})
       console.log(foo);
     }
     else {
