@@ -26,6 +26,7 @@ class MapContainer extends Component {
       });
     })
     location.then((coords) => {this.setState({lat : coords.coords.latitude, lng : coords.coords.longitude, render: true})});
+    //Events.update({poi : {$exists : true}}, {$set : {poi : {text}, lat: coords.coords.latitude, lng:coords.coords.longitude}});
   }
 
   renderMarkers() {
@@ -38,7 +39,10 @@ class MapContainer extends Component {
 
   componentWillMount()
   {
+    if(Events.find({poi:{ $exists: true, $eq : ''}}).fetch().length === 1)
+    {
       this.getLocation();
+    }
   }
 
   componentDidMount()
@@ -46,9 +50,17 @@ class MapContainer extends Component {
     console.log(this.state);
   }
 
+  componentWillReceiveProps(nextProps)
+  {
+    if(Events.find({poi:{ $exists: true, $ne : ''}}).fetch().length === 1) {
+      var data = Events.find({poi:{ $exists: true, $ne : ''}}).fetch()[0];
+      this.setState({lat : data.lat, lng: data.lng});
+      console.log(this.state);
+    }
+  }
 
   render() {
-    console.log(this.state);
+
     if(this.state.render)
     {
       return (

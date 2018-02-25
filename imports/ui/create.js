@@ -81,6 +81,7 @@ export class Create extends Component{
       zip : this.state.zip,
       category: this.state.cate,
       description: this.state.desc,
+      dist: 0,
       lat: coords[0],
       lng: coords[1],
      };
