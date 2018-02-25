@@ -161,6 +161,7 @@ background-color: #fff;
     left: 0;
     background-color:#D2D7D3;
     opacity: 0.8;
+    display: none;
 }
 
 #cMenu 
@@ -179,6 +180,7 @@ background-color: #fff;
     display: flex;
     flex-wrap: wrap;
     overflow: scroll;
+    display: none;
 }
 
 #cCard
@@ -205,4 +207,5 @@ width: 10rem;
     margin-right: 5%;
     display: flex;
     flex-wrap: wrap;
+    display: none;
 }
