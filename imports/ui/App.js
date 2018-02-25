@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom'
 import { Title } from './title.js'
 import { Search } from './search.js'
 import { Create } from './create.js'
+import { OverLay } from './OverLay.js'
 
 import MapContainer from './MapContainer.js'
 import {GoogleApiWrapper} from 'google-maps-react';
@@ -12,18 +13,21 @@ class App extends Component
 {
   constructor(props){
     super(props);
-    this.state = {start: "none", select: false};
+    this.state = {start: "none", select: false, principle: 'none', points: [], cate: 'none'};
   }
 
   render() {
     let start = this.state.start;
     let select = this.state.select;
+    let principle = this.state.principle;
+    let points = this.state.points;
+    let cate = this.state.cate;
     if (start == "none")
     {
       return (
         <div>
-          <Title start={this.state.start} change={(start) => this.setState({start})} />
-          <article id="content">
+          <Title start={start} change={(start) => this.setState({start})} />
+          <article id="content" >
             <section id="mapBox"> <MapContainer google = {this.props.google} loc = {this.state}/></section>
           </article>
 
@@ -36,10 +40,12 @@ class App extends Component
       {
         return (
           <div>
-            <Title start={this.state.start} change={(start) => this.setState({start})} />
+            <OverLay select={(select) => this.setState({select})} setCate={(cate) => this.setState({cate})}/>
+
+            <Title start={start} change={(start) => this.setState({start})} />
             <article id="content">
               <section id="mapBox"> <MapContainer google = {this.props.google} loc = {this.state}/></section>
-              <Create change={(start) => this.setState({start})} select={(select) => this.setState({select})}/>
+              <Create category={cate} change={(start) => this.setState({start})} select={(select) => this.setState({select})}/>
             </article>
           </div>
         );
@@ -47,7 +53,7 @@ class App extends Component
       else {
         return (
           <div>
-            <Title start={this.state.start} change={(start) => this.setState({start})} />
+            <Title start={start} change={(start) => this.setState({start})} />
             <article id="content">
               <section id="mapBox"> <MapContainer google = {this.props.google} loc = {this.state}/></section>
               <Create google = {this.props.google} change={(start) => this.setState({start})} select={(select) => this.setState({select})}/>
@@ -61,11 +67,12 @@ class App extends Component
     {
       return (
         <div>
-          <Title start={this.state.start} change={(start) => this.setState({start})} />
+          <Title start={start} change={(start) => this.setState({start})} />
           <article id="content">
 
             <section id="mapBox"> <MapContainer google = {this.props.google} loc = {this.state}/></section>
-            <Search />
+            <Search findL={(principle) => this.setState({principle})} getP={(points) => this.setState({points})}/>
+
           </article>
         </div>
       );

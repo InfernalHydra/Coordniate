@@ -90,18 +90,16 @@ export class Create extends Component{
       return(
         <section id="create">
           <form id="itemText">
-            <input type='text' placeholder="Name" name='name' id="itemInput" onChange={this.handleChange}/><br/>
-            <input type='text' placeholder="Title" name='title' id="itemInput" onChange={this.handleChange}/><br/>
-            <input type="text" placeholder="Address" name='add' id="itemInput" onChange={this.handleChange}/> <br/>
-            <input type="text" placeholder="City" name='city' id="itemInput" onChange={this.handleChange}/> <br/>
-            <input type="text" placeholder="State" name='state' id="itemInput" onChange={this.handleChange}/> <br/>
-            <input type="number" placeholder="Zip" name='zip' id="itemInput" min={0} max={99999} onChange={this.handleChange}/> <br/>
-
+            <input type='text' placeholder="Name" name='name' id="itemInput" onChange={this.handleChange}/>
+            <input type='text' placeholder="Title" name='title' id="itemInput" onChange={this.handleChange}/>
+            <input type="text" placeholder="Address" name='add' id="itemInput" onChange={this.handleChange}/>
+            <input type="text" placeholder="City" name='city' id="itemInput" onChange={this.handleChange}/>
+            <input type="text" placeholder="State" name='state' id="itemInput" onChange={this.handleChange}/>
+            <input type="number" placeholder="Zip" name='zip' id="itemInput" min={0} max={99999} onChange={this.handleChange}/>
+            <textarea placeholder="Description" id="itemInput" className="itemTextArea" rows="1" cols="22"/>
             <select name='cate' id="itemInput" onClick={this.handleSelect}>
               <option value='Category'>Category</option>
             </select>
-            <textarea placeholder="Description" id="itemInput" className="itemTextArea" rows="1" cols="22"/> <br/>
-
             <button id="itemInput" style={{backgroundColor: '#fff'}} onClick={this.send}>CREATE</button>
           </form>
         </section>
