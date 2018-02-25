@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Map, InfoWindow, Marker} from 'google-maps-react';
+import {InfoWindow, Marker} from 'google-maps-react';
+import Map from 'google-maps-react'
 import { withTracker } from 'meteor/react-meteor-data';
 import { Events } from '../api/events.js';
 
@@ -53,7 +54,7 @@ class MapContainer extends Component {
     {
       return (
         <div className = "wrapper">
-          <Map classname = "map" google = {this.props.google} initialCenter = {this.state} zoom = {8}>
+          <Map classname = "map" google = {this.props.google} initialCenter = {this.state} zoom = {13}>
             <Marker position = {{lat : 32.9854, lng: -156.7669}}/>
             {this.props.isReady ? this.renderMarkers() : ''}
         </Map>
