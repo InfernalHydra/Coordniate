@@ -72,20 +72,6 @@ export class Search extends Component{
     deg2rad(deg) {
       return deg * (Math.PI/180)
     }
-  })}, () => {reject("error")});
-  promise.then((coords) =>{
-    var bar = Events.find({poi : { $exists: true}}).fetch()[0]._id;
-    console.log(Events.find({poi : { $exists: true}}).fetch());
-    console.log(Events.find({poi : { $exists: true}}).fetch()[0]._id);
-    Meteor.call('events.updateCenter', bar, text, coords[0], coords[1]);
-    Events.find(
-      {poi:{ $exists : false}}
-    ).fetch().forEach((obj) => {
-      var dist = this.getDistanceFromLatLonInMi(coords[0], coords[1], obj.lat, obj.lng);
-      var id = obj._id;
-      Meteor.call('events.update', id, dist);
-      console.log(obj.dist);
-    });
 
     render(){
       return(
@@ -161,21 +147,7 @@ export class Search extends Component{
               <i id="icon"><i className="fas fa-baseball-ball"></i></i>
 
             </div>);
-          }
-class Terms extends Component{
-  render(){
-    let searched = Events.find({dist : {$lte : 20}}).fetch();
-    const list = this.props.stuff;
-    //console.log(list);
-    for (let x in list)
-    {
-      searched.push(<Boxes key={list[x].address} text={list[x]}/>);
-    }
-    return(
-      <div id="listItems">{searched}</div>
-    );
-  }
-}
+        }
 
         }
 
