@@ -41,7 +41,7 @@ render(){
     <section id="find">
       <form id="sForm">
         <input type="text" id="itemSearch" placeholder="Search" name="search"/>
-        <button id="seButton" onClick={this.send}>SEND</button>
+        <button id="seButton" class="hButton" onClick={this.send}>SEND</button>
       </form>
       <Terms stuff={this.state.stuff}/>
     </section>
@@ -89,12 +89,13 @@ class Boxes extends Component{
 
       return(<div onMouseOver={this.onHover} onMouseOut={this.onHoverOut} onClick={this.onClick} style={this.state.style}>
         <section id="inItem">
-          <article id="inItemH"><div style={{fontSize: '1.5rem'}}>{text.title}</div>&emsp;&emsp;<div style={{fontSize: '1rem', marginTop: '0.3rem'}}>05/02/18</div></article>
+          <article id="inItemH"><div style={{fontSize: '1.5rem'}}>{text.title}</div>&emsp;&emsp;<div style={{fontSize: '1rem', marginTop: '0.3rem'}}>05/02/18</div>
+          </article>
           {this.name}
           <div style={{overflow: 'hidden', width: '100%', height: '1.25rem'}}>{text.address}, {text.city}, {text.state} {text.zip}</div>
         </section>
         <i id="icon"><i className="fas fa-baseball-ball"></i></i>
-
+        <span id="rTool">This is a baseball game.</span>
       </div>);
   }
 }
