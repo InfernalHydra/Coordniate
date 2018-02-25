@@ -8,16 +8,22 @@ export class Search extends Component{
     super(props);
     this.state = {text: '', stuff: []};
     this.send = this.send.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
+  handleChange(e){
+    var val = e.target.value;
+    this.setState({text: val});
+    }
 send(e){
   e.preventDefault();
-  let text = e.target.value;
+  let text = this.state.text;
+
   let searched = Events.find({address : text}).fetch();
-  this.setState({text: {text}, stuff: {searched}});
+  //this.setState({text: {text}, stuff: {searched}});
+  console.log(typeof text);
   var geocoder = new google.maps.Geocoder();
-  console.log(text);
   const promise = new Promise((resolve, reject) => {
-    geocoder.geocode({'address' : {text}}, (res, status) => {
+    geocoder.geocode({'address' : text}, (res, status) => {
     if (status == 'OK') {
       console.log(res);
       //console.log(res[0].geometry.location.lat());
@@ -33,14 +39,14 @@ send(e){
     }
   })}, () => {reject("error")});
   promise.then((coords) =>{
-  Events.update({poi:{ $exists: true}}, {$set : {poi : text, lat : coords[0], lng : coords[1]}})
+    Events.update({poi:{ $exists: true}}, {$set : {poi : text, lat : coords[0], lng : coords[1]}})
   });
  }
 render(){
   return(
     <section id="find">
       <form id="sForm">
-        <input type="text" id="itemSearch" placeholder="Search" name="search"/>
+        <input type="text" id="itemSearch" placeholder="Search" name="search" onChange={this.handleChange}/>
         <button id="seButton" onClick={this.send}>SEND</button>
       </form>
       <Terms stuff={this.state.stuff}/>
@@ -78,24 +84,31 @@ class Boxes extends Component{
     //this.setState({style: {background: 'red'}});
   }
   onClick(){
-    /*
     if(this.state.selected)
     {
       this.setState({selected: false});
-    }*/
+    }
+    else{
+      this.setState({selected: true});
+    }
   }
   render(){
     let text = this.props.text;
 
       return(<div onMouseOver={this.onHover} onMouseOut={this.onHoverOut} onClick={this.onClick} style={this.state.style}>
         <section id="inItem">
-          <article id="inItemH"><div style={{fontSize: '1.5rem'}}>{text.title}</div>&emsp;&emsp;<div style={{fontSize: '1rem', marginTop: '0.3rem'}}>05/02/18</div></article>
+          <article id="inItemH"><div style={{fontSize: '1.5rem'}}>{text.title}</div>&emsp;&emsp;<div style={{fontSize: '1rem', marginTop: '0.3rem'}}></div></article>
           {this.name}
           <div style={{overflow: 'hidden', width: '100%', height: '1.25rem'}}>{text.address}, {text.city}, {text.state} {text.zip}</div>
         </section>
         <i id="icon"><i className="fas fa-baseball-ball"></i></i>
 
       </div>);
+  }
+}
+class Desc extends Component{
+  render(){
+    <div></div>
   }
 }
 export default withTracker(() => {
