@@ -49,41 +49,6 @@ export class Create extends Component{
     let text = document.getElementsByClassName('itemTextArea');
     console.log(text[0].value);
 
-    var that = this;
-    var geocoder = new google.maps.Geocoder();
-    geocoder.geocode({'address' : this.state.add}, (res, status) => {
-    if (status == 'OK') {
-      console.log(res);
-      var foo = [0,0];
-      foo[0] = res[0].geometry.location.lat();
-      foo[1] = res[0].geometry.location.lng();
-      that.setState({lat: foo[0], lng: foo[1]})
-      console.log(foo);
-    }
-    else {
-      console.log(status);
-    }});
-
-    /*
-    var promise = new Promise((resolve, reject) => {
-      geocoder.geocode({'address' : this.state.add}, (res, status) => {
-      if (status == 'OK') {
-        console.log(res);
-        //console.log(res[0].geometry.location.lat());
-        var foo = [0,0];
-        foo[0] = res[0].geometry.location.lat();
-        foo[1] = res[0].geometry.location.lng();
-        resolve(foo);
-        console.log(foo);
-      }
-      else {
-        console.log(status);
-      }
-    })}, () => {reject("error")}).then((coords) => {
-      that.setState({lat : coords[0], lng : coords[1]})
-    });*/
-
-    console.log(this.state.lat);
     var foo = {
       name: this.state.name,
       title: this.state.title,
@@ -102,6 +67,7 @@ export class Create extends Component{
     this.props.change('none');
   }
   render(){
+    console.log(this.props);
     if (this.state.send){
       return null;
     }
@@ -117,7 +83,7 @@ export class Create extends Component{
             <input type="number" placeholder="Zip" name='zip' id="itemInput" min={0} max={99999} onChange={this.handleChange}/>
             <textarea placeholder="Description" id="itemInput" className="itemTextArea" rows="1" cols="22"/>
             <select name='cate' id="itemInput" onClick={this.handleSelect}>
-              <option value='Category'>Category</option>
+              <option value={this.props.category}>{this.props.category}</option>
             </select>
             <button id="itemInput" style={{backgroundColor: '#fff'}} onClick={this.send}>CREATE</button>
           </form>
