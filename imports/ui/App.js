@@ -22,7 +22,7 @@ class App extends Component
       return (
         <div>
           <Title start={this.state.start} change={(start) => this.setState({start})} />
-
+          <MapContainer google = {this.props.google} loc = {this.state}/>
         </div>
       )
     }
@@ -31,7 +31,9 @@ class App extends Component
       return (
         <div>
           <Title start={this.state.start} change={(start) => this.setState({start})} />
-          <div id="mapBox"></div>
+          <div id="mapBox">
+            <MapContainer google = {this.props.google} loc = {this.state}/>
+          </div>
           <Create change={(start) => this.setState({start})} select={(select) => this.setState({select})}/>
         </div>
       );
@@ -41,12 +43,14 @@ class App extends Component
       return (
         <div>
           <Title start={this.state.start} change={(start) => this.setState({start})} />
-          <div id="mapBox"></div>
+          <div id="mapBox">
+            <MapContainer google = {this.props.google} loc = {this.state}/>
+          </div>
           <Search change={(start) => this.setState({start})}/>
         </div>
       );
     }
-      <MapContainer google = {this.props.google} loc = {this.state}/>
+
   }
 
 }
