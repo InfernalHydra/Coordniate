@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import { withTracker } from 'meteor/react-meteor-data';
 import { Events } from '../api/events.js';
+import { Meteor } from 'meteor/meteor';
+var request = require("request");
 
 export class Create extends Component{
   constructor(props){
@@ -27,13 +29,13 @@ export class Create extends Component{
       this.setState({cate: val});
     }
     else if (type == 'city'){
-      this.setState({cate: val});
+      this.setState({city: val});
     }
     else if (type == 'state'){
-      this.setState({cate: val});
+      this.setState({state: val});
     }
     else if (type == 'zip'){
-      this.setState({cate: val});
+      this.setState({zip: val});
     }
   }
   handleSelect(e){
@@ -45,21 +47,40 @@ export class Create extends Component{
     console.log(this.state);
     this.setState({send: true});
     let text = document.getElementsByClassName('itemTextArea');
-    console.log(text[0].value)
-    if(this.props.isReady)
-    {
-      events.insert({
-        name: this.state.name,
-        title: this.state.title,
-        address: this.state.add,
-        category: this.state.cate,
-        description: text[0].value,
-      });
-    }
+    console.log(text[0].value);
+    var geocoder = new google.maps.Geocoder();
+    var promise = new Promise( (resolve, reject) => {
+      geocoder.geocode({'address' : this.state.add}, (res, status) => {
+      if(status == 'OK') {
+        console.log(res);
+        //console.log(res[0].geometry.location.lat());
+        var foo = [0,0];
+        foo[0] = res[0].geometry.location.lat();
+        foo[1] = res[0].geometry.location.lng();
+        resolve(foo);
+        console.log(foo);
+      }
+      else {
+        console.log(stats);
+      }
+    })}, () => {reject("error")}).then((coords) => {that.setState({lat : coords[0], lng : coords[1]})});
+    console.log(this.state.lat);
+    var foo = {
+      name: this.state.name,
+      title: this.state.title,
+      address: this.state.add,
+      city : this.state.city,
+      state : this.state.state,
+      zip : this.state.zip,
+      category: this.state.cate,
+      description: text[0].value,
+      lat: this.state.lat,
+      lng: this.state.lng,
+    };
+    Meteor.call('events.insert', foo);
     //SEND INFO
     this.setState = {send: false, name: '', title: '', add: '', cate: '', city: '', zip: 0, state: ''};
     this.props.change('none');
-
   }
   render(){
     if (this.state.send){

@@ -50,7 +50,7 @@ class App extends Component
             <Title start={this.state.start} change={(start) => this.setState({start})} />
             <article id="content">
               <section id="mapBox"> <MapContainer google = {this.props.google} loc = {this.state}/></section>
-              <Create change={(start) => this.setState({start})} select={(select) => this.setState({select})}/>
+              <Create google = {this.props.google} change={(start) => this.setState({start})} select={(select) => this.setState({select})}/>
             </article>
           </div>
         );

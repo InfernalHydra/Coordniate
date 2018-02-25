@@ -22,7 +22,6 @@ class SearchBox extends Component{
   }
 send(e){
   let text = e.target.value;
-
   let searched = events.find({address : text}).fetch();
   this.setState({text: {text}, stuff: {searched}});
 }
