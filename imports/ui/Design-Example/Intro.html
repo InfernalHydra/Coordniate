@@ -10,15 +10,26 @@
         <link rel="stylesheet" href="Intro.css"> 
     </head>
     <body>
+
     <h1 id="Main-Title">COORDINATE</h1> <!-- Main Title -->
     <button id="Option" class="oLeft">FIND</button> <!-- Create Event Option -->
     <button id="Option" onclick="rightClick()" class="oRight">CREATE</button> <!-- Search Event Option -->
+    
     <div id="Flat-Line"></div> <!-- Horizontal Line -->
 
     <div id="mapBox"></div>
     
     <div id="leftSideBar">
-            <input type="text" placeholder="Name" id="itemInput"> <br>
+        <div id="formBox">
+            <form id="itemText" style="float:right;">
+               <input type="text" placeholder="Search" id="itemInput">
+            </form>
+        </div>
+        <div id="itemListing">
+            <p>Alicia</p>
+            <p>800 W. Campbell Road, Richardson, TX 75080</p>
+            <p>Lorem Ipsum Dolor est Lorem Lorem Ipsum Dolor est Lorem</p>
+        </div>
     </div>
     <div id="rightSideBar">
             <div id="formBox">
