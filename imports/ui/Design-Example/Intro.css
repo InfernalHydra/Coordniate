@@ -106,6 +106,18 @@ float: right;
     color: #3262FF;
 }
 
+#square 
+{
+    margin-top: 4%;
+    width: 40%;
+    height: 20%;
+    float: right;
+    margin-right: 28%;
+    border: 1px solid #87BFFF;
+    border-radius: 2px;
+    background-color: #87D37C;
+}
+
 #mapBox
 {
     width: 100%;
