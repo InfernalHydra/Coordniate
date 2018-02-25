@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 
-export class Search extends Component{
+class Search extends Component{
   render(){
     return (
       <section id="find">
@@ -20,13 +20,13 @@ class SearchBox extends Component{
   }
 send(e){
   let text = e.target.value;
-  let searched = [{id: 'qaz'}, {id: 'wsx'}, {id: 'edc'}];
+  
+  let searched = events.find({address : text}).fetch();
   //ADD REQUEST//
   //SET IT TO {searched}//
   this.setState({text: {text}, stuff: {searched}});
 }
 render(){
-  console.log(this.state);
   return(
     <div>
       <form id="sForm" className="search-container">
@@ -88,3 +88,10 @@ class Boxes extends Component{
       </div>);
   }
 }
+export default withTracker(() => {
+  const subscription = Meteor.subscribe('events');
+  return {
+    isReady : subscription.ready(),
+    events: subscription.ready() && Events.find({}).fetch()
+  };
+})(MapContainer);
