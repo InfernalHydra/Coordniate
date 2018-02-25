@@ -46,22 +46,20 @@ export class Create extends Component{
     }
     else{
       return(
-        <div id="rightSideBar">
-          <div id="formBox">
-            <div id="itemText">
-              <input type='text' placeholder="Name" name='name' id="itemInput" onChange={this.handleChange}/><br/>
-              <input type='text' placeholder="Title" name='desc' id="itemInput" onChange={this.handleChange}/><br/>
+        <section id="create">
+          <form id="itemText">
+            <input type='text' placeholder="Name" name='name' id="itemInput" onChange={this.handleChange}/><br/>
+            <input type='text' placeholder="Title" name='desc' id="itemInput" onChange={this.handleChange}/><br/>
 
-              <input type="text" placeholder="Address" name='add' id="itemInput" onChange={this.handleChange}/> <br/>
-              <select name='cate' id="itemInput" onClick={this.handleSelect}>
-                <option value='Category'>Category</option>
-              </select>
-              <textarea placeholder="Description" id="itemInput" className="itemTextArea" rows="1" cols="22"/> <br/>
+            <input type="text" placeholder="Address" name='add' id="itemInput" onChange={this.handleChange}/> <br/>
+            <select name='cate' id="itemInput" onClick={this.handleSelect}>
+              <option value='Category'>Category</option>
+            </select>
+            <textarea placeholder="Description" id="itemInput" className="itemTextArea" rows="1" cols="22"/> <br/>
 
-              <button id="itemInput" style={{backgroundColor: '#fff'}} onClick={this.send}>CREATE</button>
-            </div>
-          </div>
-        </div>
+            <button id="itemInput" style={{backgroundColor: '#fff'}} onClick={this.send}>CREATE</button>
+          </form>
+        </section>
       )
     }
 

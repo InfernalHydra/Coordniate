@@ -24,7 +24,10 @@ class App extends Component
       return (
         <div>
           <Title start={this.state.start} change={(start) => this.setState({start})} />
-          <MapContainer google = {this.props.google} loc = {this.state}/>
+          <article id="content">
+            <section id="mapBox"> <MapContainer google = {this.props.google} loc = {this.state}/></section>
+          </article>
+
         </div>
       )
     }
@@ -33,18 +36,25 @@ class App extends Component
       return (
         <div>
           <Title start={this.state.start} change={(start) => this.setState({start})} />
-            <MapContainer google = {this.props.google} loc = {this.state}/>
-          <Create change={(start) => this.setState({start})} select={(select) => this.setState({select})}/>
+          <article id="content">
+
+            <section id="mapBox"> <MapContainer google = {this.props.google} loc = {this.state}/></section>
+            <Create change={(start) => this.setState({start})} select={(select) => this.setState({select})}/>
+          </article>
+
         </div>
-      );
+          );
     }
     else if (start == "search")
     {
       return (
         <div>
           <Title start={this.state.start} change={(start) => this.setState({start})} />
-            <MapContainer google = {this.props.google} loc = {this.state}/>S
-          <Search change={(start) => this.setState({start})}/>
+          <article id="content">
+
+            <section id="mapBox"> <MapContainer google = {this.props.google} loc = {this.state}/></section>
+            <Search />
+          </article>
         </div>
       );
     }
