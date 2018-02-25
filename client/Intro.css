@@ -93,10 +93,11 @@ float: right;
     width: 85%;
     border-bottom: 1px solid #87BFFF;
     height: 100%;
-    float: right;
+    float: left;
     overflow: hidden;
     font-family: "Work Sans";
     display: inline-block;
+    background: #fff;
     font-size: 0.75rem;
 }
 

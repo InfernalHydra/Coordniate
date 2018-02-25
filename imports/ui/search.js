@@ -10,9 +10,10 @@ export class Search extends Component{
     this.send = this.send.bind(this);
   }
 send(e){
+  e.preventDefault();
   let text = e.target.value;
   //let searched = events.find({address : text}).fetch();
-  let searched = [{city: 'Frisco', name: 'Daniel Hahn', state: 'TX', address: '11482 Blanchard Dr.', zip: 76543, description: 'Hello'}];
+  let searched = [{city: 'Frisco', name: 'Daniel Hahn', state: 'TX', address: '11482 Blanchard Dr.', zip: 76543, description: 'Hello', title: 'CodeC'}];
   this.props.findL('location');
   this.props.getP('stuff');
   this.setState({text: text, stuff: searched});
@@ -69,13 +70,13 @@ class Boxes extends Component{
     let text = this.props.text;
 
       return(<div onMouseOver={this.onHover} onMouseOut={this.onHoverOut} onClick={this.onClick} style={this.state.style}>
-        <i id="icon"><i className="fas fa-baseball-ball"></i></i>
         <section id="inItem">
-          <article id="inItemH"><div style={{fontSize: '1.5rem'}}>{text.name}</div>&emsp;&emsp;<div style={{fontSize: '1rem', marginTop: '0.3rem'}}>05/02/18</div></article>
-          <br/>
+          <article id="inItemH"><div style={{fontSize: '1.5rem'}}>{text.title}</div>&emsp;&emsp;<div style={{fontSize: '1rem', marginTop: '0.3rem'}}>05/02/18</div></article>
+          {this.name}
           <div style={{overflow: 'hidden', width: '100%', height: '1.25rem'}}>{text.address}, {text.city}, {text.state} {text.zip}</div>
-          <div style={{overflow: 'scroll'}}>{text.description}</div>
         </section>
+        <i id="icon"><i className="fas fa-baseball-ball"></i></i>
+
       </div>);
   }
 }
