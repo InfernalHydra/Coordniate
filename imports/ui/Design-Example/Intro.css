@@ -36,12 +36,6 @@
 
 }
 
-.oRight 
-{
-border: none;
-width: 25%;
-}
-
 #content
 {
     display: flex;
@@ -136,4 +130,5 @@ height: 1.25rem;
 border: none;
 border-bottom: 1px solid #87BFFF;
 margin-top: 5%;
+background-color: #fff;
 }
