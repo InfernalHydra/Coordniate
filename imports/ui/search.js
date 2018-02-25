@@ -20,7 +20,7 @@ send(e){
 render(){
   return(
     <section id="find">
-      <form id="sForm" className="search-container">
+      <form id="sForm">
         <input type="text" id="itemSearch" placeholder="Search" name="search"/>
       </form>
       <button onClick={this.send}>send</button>

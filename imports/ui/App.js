@@ -68,6 +68,7 @@ class App extends Component
 
             <section id="mapBox"> <MapContainer google = {this.props.google} loc = {this.state}/></section>
             <Search findL={(principle) => this.setState({principle})} getP={(points) => this.setState({points})}/>
+
           </article>
         </div>
       );
