@@ -48,10 +48,8 @@
 #find
 {
     position: absolute;
-
     width: 25%;
     height: 100%;
-    
     border-right: 1px solid #87BFFF;
     float: left;
     z-index: 1;
@@ -73,6 +71,8 @@ border-bottom: 1px solid #87BFFF;
 font-size: 1.25rem;
 width: 100%;
 letter-spacing: -0.05rem;
+background-color: #fff;
+opacity: 1;
 }
 
 #listItems
