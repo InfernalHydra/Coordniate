@@ -18,8 +18,7 @@ class App extends Component
   render() {
     let start = this.state.start;
     console.log(start + " " + 6);
-    return <MapContainer google = {this.props.google}/>;
-    /*
+
     if (start == "none")
     {
       return (
@@ -48,7 +47,7 @@ class App extends Component
           <Search change={(start) => this.setState({start})}/>
         </div>
       );
-    }*/
+    }
 
   }
 
