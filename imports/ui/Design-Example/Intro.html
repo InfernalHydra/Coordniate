@@ -1,3 +1,4 @@
+@@ -0,0 +1,52 @@
 <!doctype html>
 <html class="no-js" lang="">
     <head>
@@ -7,44 +8,46 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400" rel="stylesheet"> 
-        <link rel="stylesheet" href="Intro.css"> 
+        <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+        <link rel="stylesheet" href="Intros.css"> 
     </head>
     <body>
+        <article id="titleBar">
+        <button id="button" class="oLeft">FIND</button>
+        <h1 id="header">COORDINATE</h1>
+        <button id="button" class="oLeft">CREATE</button>
+        </article>
 
-    <h1 id="Main-Title">COORDINATE</h1> <!-- Main Title -->
-    <button id="Option" class="oLeft">FIND</button> <!-- Create Event Option -->
-    <button id="Option" onclick="rightClick()" class="oRight">CREATE</button> <!-- Search Event Option -->
-    
-    <div id="Flat-Line"></div> <!-- Horizontal Line -->
+        <article id="content">
+            <section id="find"> 
+                    <div class="search-container">
+                        <form id="sForm">
+                            <input type="text" id="itemSearch" placeholder="Search" name="search">
+                        </form>
+                    </div>
+                    <div id="listItems">
+                        <i id="icon"><i class="fas fa-baseball-ball"></i></i>
+                        <section id="inItem">
+                           <article id="inItemH"><div style="font-size: 1.5rem;">Alicia</div>&emsp;&emsp;<div style="font-size: 1rem; margin-top: 0.3rem;">05/02/18</div></article>
+                           <br>
+                           <div style="overflow: hidden; width: 100%; height: 1.25rem;">800 W. Campbell Road, Richardson, TX 75080</div>
+                           <div style="overflow: scroll;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet</div>
+                        </section>
+                    </div>
+            </section>
 
-    <div id="mapBox"></div>
-    
-    <div id="leftSideBar">
-        <div id="formBox">
-            <form id="itemText" style="float:right;">
-               <input type="text" placeholder="Search" id="itemInput">
-            </form>
-        </div>
-        <div id="itemListing">
-            <p>Alicia</p>
-            <p>800 W. Campbell Road, Richardson, TX 75080</p>
-            <p>Lorem Ipsum Dolor est Lorem Lorem Ipsum Dolor est Lorem</p>
-        </div>
-    </div>
-    <div id="rightSideBar">
-            <div id="formBox">
+            <section id="mapBox"> </section>
+
+            <section id="create"> 
                     <form id="itemText">
-                       <input type="text" placeholder="Name" id="itemInput"> <br>
-                       <input placeholder="Title" type="text" id="itemInput"> <br>
-                       <input placeholder="Address" type="text" id="itemInput"> <br>
-                       <input placeholder="Category" type="text" id="itemInput"> <br>
-                       <textarea placeholder="Description" id="itemInput" class="itemTextArea" rows="1" cols="22"> </textarea>  <br>
-                       <input type="submit" id="itemInput" style="background-color: #fff;" value="SUBMIT">
+                            <input type="text" placeholder="Name" id="itemInput"> <br>
+                            <input placeholder="Title" type="text" id="itemInput"> <br>
+                            <input placeholder="Address" type="text" id="itemInput"> <br>
+                            <input placeholder="Category" type="text" id="itemInput"> <br>
+                            <textarea placeholder="Description" id="itemInput"> </textarea>  <br>
                     </form>
-                </div>
-    </div>
+            </section>
+        </article>
 
     </body>
-    <script>
-    </script>
-</html>
+    </html>
