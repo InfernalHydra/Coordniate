@@ -17,34 +17,56 @@ class App extends Component
 
   render() {
     let start = this.state.start;
-    console.log(start + " " + 6);
-
+    let select = this.state.select;
     if (start == "none")
     {
       return (
         <div>
           <Title start={this.state.start} change={(start) => this.setState({start})} />
-          <MapContainer google = {this.props.google} loc = {this.state}/>
+          <article id="content">
+            <section id="mapBox"> <MapContainer google = {this.props.google} loc = {this.state}/></section>
+          </article>
+
         </div>
       )
     }
     else if (start == "create")
     {
-      return (
-        <div>
-          <Title start={this.state.start} change={(start) => this.setState({start})} />
-            <MapContainer google = {this.props.google} loc = {this.state}/>
-          <Create change={(start) => this.setState({start})} select={(select) => this.setState({select})}/>
-        </div>
-      );
+      if (select)
+      {
+        return (
+          <div>
+            <Title start={this.state.start} change={(start) => this.setState({start})} />
+            <article id="content">
+              <section id="mapBox"> <MapContainer google = {this.props.google} loc = {this.state}/></section>
+              <Create change={(start) => this.setState({start})} select={(select) => this.setState({select})}/>
+            </article>
+          </div>
+        );
+      }
+      else {
+        return (
+          <div>
+            <Title start={this.state.start} change={(start) => this.setState({start})} />
+            <article id="content">
+              <section id="mapBox"> <MapContainer google = {this.props.google} loc = {this.state}/></section>
+              <Create change={(start) => this.setState({start})} select={(select) => this.setState({select})}/>
+            </article>
+          </div>
+        );
+      }
+
     }
     else if (start == "search")
     {
       return (
         <div>
           <Title start={this.state.start} change={(start) => this.setState({start})} />
-            <MapContainer google = {this.props.google} loc = {this.state}/>S
-          <Search change={(start) => this.setState({start})}/>
+          <article id="content">
+
+            <section id="mapBox"> <MapContainer google = {this.props.google} loc = {this.state}/></section>
+            <Search />
+          </article>
         </div>
       );
     }

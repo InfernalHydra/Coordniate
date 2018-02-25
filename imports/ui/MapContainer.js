@@ -11,7 +11,6 @@ class MapContainer extends Component {
     this.state = {lat: 30.22, lng: -81.99, render : false};
     this.getLocation = this.getLocation.bind(this);
   }
-
   getLocation()
   {
     foo = {};

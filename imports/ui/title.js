@@ -26,12 +26,13 @@ export class Title extends Component{
 
   render(){
     return(
-      <div>
-        <button id="Option" className="oRight" onClick={this.onClickC}>create</button>
-        <h1 id="Main-Title">COORDINATE</h1>
-        <button id="Option" className="oLeft" onClick={this.onClickS}>search</button>
+      <article id="titleBar">
+        <button id="button" className="oLeft" onClick={this.onClickS}>search</button>
+        <h1 id="header">COORDINATE</h1>
+        <button id="button" className="oLeft" onClick={this.onClickC}>create</button>
+
         <div id="Flat-Line"></div>
 
-      </div>
+      </article>
     );}
   }
