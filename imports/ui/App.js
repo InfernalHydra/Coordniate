@@ -26,7 +26,7 @@ class App extends Component
       return (
         <div>
           <Title start={start} change={(start) => this.setState({start})} />
-          <article id="content">
+          <article id="content" >
             <section id="mapBox"> <MapContainer google = {this.props.google} loc = {this.state}/></section>
           </article>
 
@@ -40,7 +40,7 @@ class App extends Component
         return (
           <div>
             <OverLay />
-            
+
             <Title start={start} change={(start) => this.setState({start})} />
             <article id="content">
               <section id="mapBox"> <MapContainer google = {this.props.google} loc = {this.state}/></section>
