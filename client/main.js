@@ -6,5 +6,5 @@ import App from '../imports/ui/App.js'
 
 Meteor.startup(() =>
 {
-      render(<App name = "meme"/>, document.getElementById('render-target'));
+      render(<App />, document.getElementById('render-target'));
 });
