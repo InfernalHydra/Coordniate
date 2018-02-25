@@ -8,7 +8,7 @@ var request = require("request");
 export class Create extends Component{
   constructor(props){
     super(props);
-    this.state = {send: false, name: '', title: '', add: '', cate: '', city: '', zip: 0, state: ''};
+    this.state = {send: false, name: '', title: '', add: '', cate: '', city: '', zip: 0, state: '', lat: 0, lng: 0};
     this.send = this.send.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
@@ -48,23 +48,7 @@ export class Create extends Component{
     this.setState({send: true});
     let text = document.getElementsByClassName('itemTextArea');
     console.log(text[0].value);
-    var geocoder = new google.maps.Geocoder();
-    var promise = new Promise( (resolve, reject) => {
-      geocoder.geocode({'address' : this.state.add}, (res, status) => {
-      if(status == 'OK') {
-        console.log(res);
-        //console.log(res[0].geometry.location.lat());
-        var foo = [0,0];
-        foo[0] = res[0].geometry.location.lat();
-        foo[1] = res[0].geometry.location.lng();
-        resolve(foo);
-        console.log(foo);
-      }
-      else {
-        console.log(stats);
-      }
-    })}, () => {reject("error")}).then((coords) => {that.setState({lat : coords[0], lng : coords[1]})});
-    console.log(this.state.lat);
+
     var foo = {
       name: this.state.name,
       title: this.state.title,
@@ -83,6 +67,7 @@ export class Create extends Component{
     this.props.change('none');
   }
   render(){
+    console.log(this.props);
     if (this.state.send){
       return null;
     }
@@ -98,7 +83,7 @@ export class Create extends Component{
             <input type="number" placeholder="Zip" name='zip' id="itemInput" min={0} max={99999} onChange={this.handleChange}/>
             <textarea placeholder="Description" id="itemInput" className="itemTextArea" rows="1" cols="22"/>
             <select name='cate' id="itemInput" onClick={this.handleSelect}>
-              <option value='Category'>Category</option>
+              <option value={this.props.category}>{this.props.category}</option>
             </select>
             <button id="itemInput" style={{backgroundColor: '#fff'}} onClick={this.send}>CREATE</button>
           </form>
