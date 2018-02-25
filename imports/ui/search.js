@@ -22,8 +22,8 @@ render(){
     <section id="find">
       <form id="sForm">
         <input type="text" id="itemSearch" placeholder="Search" name="search"/>
+        <button onClick={this.send}>send</button>
       </form>
-      <button onClick={this.send}>send</button>
       <Terms stuff={this.state.stuff}/>
     </section>
   )};
