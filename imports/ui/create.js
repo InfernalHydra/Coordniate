@@ -54,7 +54,7 @@ export class Create extends Component{
 
               <input type="text" placeholder="Address" name='add' id="itemInput" onChange={this.handleChange}/> <br/>
               <select name='cate' id="itemInput" onClick={this.handleSelect}>
-                <option value='Category' selected>Category</option>
+                <option value='Category'>Category</option>
               </select>
               <textarea placeholder="Description" id="itemInput" className="itemTextArea" rows="1" cols="22"/> <br/>
 
