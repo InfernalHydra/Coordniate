@@ -29,11 +29,9 @@ export class Create extends Component{
   }
   handleSelect(e){
     e.preventDefault();
-    console.log(e.target.value);
     this.props.select(true);
   }
   send(){
-    console.log(this.state);
     this.setState({send: true});
     let text = document.getElementsByClassName('itemTextArea');
     console.log(text[0].value)

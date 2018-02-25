@@ -17,8 +17,7 @@ class App extends Component
 
   render() {
     let start = this.state.start;
-    console.log(start + " " + 6);
-
+    let select = this.state.select;
     if (start == "none")
     {
       return (
@@ -33,17 +32,30 @@ class App extends Component
     }
     else if (start == "create")
     {
-      return (
-        <div>
-          <Title start={this.state.start} change={(start) => this.setState({start})} />
-          <article id="content">
+      if (select)
+      {
+        return (
+          <div>
+            <Title start={this.state.start} change={(start) => this.setState({start})} />
+            <article id="content">
+              <section id="mapBox"> <MapContainer google = {this.props.google} loc = {this.state}/></section>
+              <Create change={(start) => this.setState({start})} select={(select) => this.setState({select})}/>
+            </article>
+          </div>
+        );
+      }
+      else {
+        return (
+          <div>
+            <Title start={this.state.start} change={(start) => this.setState({start})} />
+            <article id="content">
+              <section id="mapBox"> <MapContainer google = {this.props.google} loc = {this.state}/></section>
+              <Create change={(start) => this.setState({start})} select={(select) => this.setState({select})}/>
+            </article>
+          </div>
+        );
+      }
 
-            <section id="mapBox"> <MapContainer google = {this.props.google} loc = {this.state}/></section>
-            <Create change={(start) => this.setState({start})} select={(select) => this.setState({select})}/>
-          </article>
-
-        </div>
-          );
     }
     else if (start == "search")
     {
